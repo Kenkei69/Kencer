@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2, Star, Zap, MonitorSmartphone, PenTool } from 'lucide-react';
 import { Link } from 'react-router';
+import { projectsData } from '../data/projects';
 
 export default function Home() {
   return (
@@ -23,11 +24,12 @@ export default function Home() {
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <div className="w-[300px] h-[400px] md:w-[450px] md:h-[600px] mask-brush-stroke overflow-hidden bg-white/5 backdrop-blur-sm shadow-2xl relative">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
-                alt="Portrait" 
-                className="w-full h-full object-cover object-center mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+                src={projectsData[0].image} 
+                alt="Featured Hero Graphic" 
+                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                loading="eager"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/80 to-transparent mix-blend-multiply" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/90 via-transparent to-transparent mix-blend-multiply" />
             </div>
           </div>
 
@@ -86,6 +88,37 @@ export default function Home() {
               <h3 className="font-display text-3xl text-white mb-4 tracking-wider">{feature.title}</h3>
               <p className="text-white/70 text-lg leading-relaxed">{feature.desc}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Work */}
+      <section className="max-w-7xl mx-auto w-full px-6 relative z-10 py-20">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div>
+            <h2 className="font-display text-6xl md:text-8xl text-white mb-4">Selected Work</h2>
+            <p className="text-xl text-white/70 max-w-xl">A glimpse into our latest and greatest visual creations.</p>
+          </div>
+          <Link to="/work" className="font-display text-xl uppercase tracking-widest text-white border-b border-white/30 hover:border-white pb-1 transition-all flex items-center gap-2">
+            View All Projects <ArrowRight size={20} />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {projectsData.slice(0, 3).map((project) => (
+            <Link to="/work" key={project.id} className="group cursor-pointer flex flex-col">
+              <div className="aspect-[4/5] bg-white/5 rounded-3xl mb-6 overflow-hidden relative glass-panel">
+                <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                />
+              </div>
+              <h3 className="font-display text-3xl text-white mb-2 uppercase group-hover:text-blue-400 transition-colors">{project.title}</h3>
+              <p className="text-white/50 text-sm uppercase tracking-widest">{project.category}</p>
+            </Link>
           ))}
         </div>
       </section>
