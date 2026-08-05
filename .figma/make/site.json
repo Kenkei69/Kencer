@@ -1,0 +1,10 @@
+{
+  "description": "Showcases creative projects and offers advertising services through a bold, responsive portfolio site with vibrant gradients and engaging UI elements.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
