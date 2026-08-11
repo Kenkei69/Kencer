@@ -46,8 +46,8 @@ export default function Contact() {
           Ready to make something bold? Drop us a line.
         </p>
         <div className="flex flex-col gap-4 text-xl text-foreground font-medium">
-          <a href="mailto:hello@sumnaymedia.com" className="hover:opacity-70 transition-opacity w-fit relative group">
-            hello@sumnaymedia.com
+          <a href="mailto:hello@kencer.com" className="hover:opacity-70 transition-opacity w-fit relative group">
+            hello@kencer.com
             <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-foreground transition-all duration-300 group-hover:w-full"></span>
           </a>
           <p className="opacity-70">+1 (555) 123-4567</p>

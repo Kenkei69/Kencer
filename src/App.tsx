@@ -91,7 +91,7 @@ function Layout() {
       <header className="fixed w-full top-0 z-50 glass-panel border-b-0 px-6 py-4 transition-all duration-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="font-display text-2xl tracking-wider text-foreground hover:scale-105 transition-transform origin-left">
-            SUMNAY<span className="opacity-50">MEDIA</span>
+            KENCER<span className="opacity-50">.</span>
           </Link>
 
           {/* Desktop Nav - Mega Menu approach for Work could be added here */}
@@ -197,7 +197,7 @@ function Layout() {
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-2">
               <Link to="/" className="font-display text-4xl tracking-wider text-foreground mb-6 block">
-                SUMNAY<span className="opacity-50">MEDIA</span>
+                KENCER<span className="opacity-50">.</span>
               </Link>
               <p className="text-foreground-muted max-w-sm mb-8 text-lg font-medium">
                 We design bold, unforgettable digital experiences for visionary brands. Let's build something beautiful together.
@@ -231,7 +231,7 @@ function Layout() {
             </div>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center pt-8 border-t border-[var(--glass-border)] text-foreground-muted text-sm font-medium">
-            <p>&copy; 2026 Sumnay Media. All rights reserved.</p>
+            <p>&copy; 2026 Kencer. All rights reserved.</p>
             <p>Designed with boldness.</p>
           </div>
         </footer>

@@ -140,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Video Showcase Section */}
-      <section className="max-w-7xl mx-auto w-full px-6 relative z-10 py-10">
+      <section className="max-w-7xl mx-auto w-full px-6 relative z-10 py-20">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -156,19 +156,30 @@ export default function Home() {
           </Link>
         </motion.div>
 
-        <div className="w-full aspect-video rounded-[2rem] overflow-hidden glass-panel relative group">
-          <video 
-            src={videosData[0].videoUrl} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent flex flex-col justify-end p-10">
-            <h3 className="font-display text-4xl text-foreground mb-2 uppercase">{videosData[0].title}</h3>
-            <p className="text-foreground opacity-70 uppercase tracking-widest font-bold text-sm">{videosData[0].category}</p>
-          </div>
+        <div className="grid grid-cols-1 gap-12">
+          {videosData.map((video, i) => (
+            <motion.div 
+              key={video.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: i * 0.1, duration: 0.7 }}
+              className="w-full aspect-video rounded-[2rem] overflow-hidden glass-panel relative group"
+            >
+              <video 
+                src={video.videoUrl} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent flex flex-col justify-end p-10 pointer-events-none">
+                <h3 className="font-display text-4xl text-foreground mb-2 uppercase">{video.title}</h3>
+                <p className="text-foreground opacity-90 uppercase tracking-widest font-bold text-sm">{video.category}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -300,66 +311,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="max-w-7xl mx-auto w-full px-6 relative z-10 mb-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="font-display text-6xl md:text-8xl text-foreground mb-6">Invest in Boldness</h2>
-          <p className="text-xl text-foreground opacity-70 max-w-2xl mx-auto font-medium">Transparent pricing for premium design services.</p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          {/* Tier 1 */}
-          <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
-            <div className="glass-panel p-8 rounded-3xl flex flex-col h-full">
-              <h3 className="font-display text-3xl text-foreground mb-2">Essential</h3>
-              <div className="text-5xl font-display text-foreground mb-6">$5k<span className="text-xl text-foreground opacity-50 lowercase font-body font-bold">/project</span></div>
-              <p className="text-foreground opacity-70 mb-8 pb-8 border-b border-[var(--glass-border)] font-medium">Perfect for emerging brands needing a strong foundation.</p>
-              <ul className="flex flex-col gap-4 mb-8 flex-grow text-foreground font-medium">
-                {['Brand Identity', 'Landing Page', 'Basic Animations', '1 Week Delivery'].map(f => (
-                  <li key={f} className="flex items-center gap-3"><CheckCircle2 size={18} className="text-foreground opacity-50"/> {f}</li>
-                ))}
-              </ul>
-              <button className="w-full py-4 border border-[var(--glass-border)] rounded-full text-foreground font-bold hover:bg-foreground hover:text-background transition-all uppercase tracking-widest shadow-sm">Select</button>
-            </div>
-          </Tilt>
-
-          {/* Tier 2 (Highlighted) */}
-          <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.05}>
-            <div className="clay-panel p-10 rounded-3xl flex flex-col z-10 relative h-full">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-foreground text-background px-6 py-2 rounded-full font-bold uppercase tracking-widest text-sm shadow-xl">Most Popular</div>
-              <h3 className="font-display text-4xl text-foreground mb-2 mt-4">Pro</h3>
-              <div className="text-6xl font-display text-foreground mb-6">$12k<span className="text-2xl text-foreground opacity-50 lowercase font-body font-bold">/project</span></div>
-              <p className="text-foreground opacity-80 mb-8 pb-8 border-b border-[var(--glass-border)] font-medium">Comprehensive design system for growing companies.</p>
-              <ul className="flex flex-col gap-4 mb-8 flex-grow text-foreground font-medium">
-                {['Full Website Redesign', 'Advanced 3D/Motion', 'Design System', 'Copywriting', '3 Weeks Delivery'].map(f => (
-                  <li key={f} className="flex items-center gap-3"><CheckCircle2 size={20} className="text-blue-500"/> {f}</li>
-                ))}
-              </ul>
-              <button className="w-full py-5 bg-foreground rounded-full text-background font-bold hover:shadow-xl transition-all uppercase tracking-widest text-lg">Start Project</button>
-            </div>
-          </Tilt>
-
-          {/* Tier 3 */}
-          <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
-            <div className="glass-panel p-8 rounded-3xl flex flex-col h-full">
-              <h3 className="font-display text-3xl text-foreground mb-2">Enterprise</h3>
-              <div className="text-5xl font-display text-foreground mb-6">Custom</div>
-              <p className="text-foreground opacity-70 mb-8 pb-8 border-b border-[var(--glass-border)] font-medium">Bespoke solutions for large organizations.</p>
-              <ul className="flex flex-col gap-4 mb-8 flex-grow text-foreground font-medium">
-                {['Unlimited Pages', 'Custom WebGL', 'Dedicated Team', 'Priority Support'].map(f => (
-                  <li key={f} className="flex items-center gap-3"><CheckCircle2 size={18} className="text-foreground opacity-50"/> {f}</li>
-                ))}
-              </ul>
-              <button className="w-full py-4 border border-[var(--glass-border)] rounded-full text-foreground font-bold hover:bg-foreground hover:text-background transition-all uppercase tracking-widest shadow-sm">Let's Talk</button>
-            </div>
-          </Tilt>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="py-32 relative text-center px-6 z-10 glass-panel border-x-0 mx-[-1rem]">
