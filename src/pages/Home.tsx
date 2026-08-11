@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { projectsData } from '../data/projects';
 import { videosData } from '../data/videos';
+import Hero3DObject from '../components/Hero3DObject';
 import { useEffect, useState } from 'react';
 
 // Text Scramble Effect Component
@@ -60,16 +61,10 @@ export default function Home() {
 
           <motion.div 
             style={{ y: yHeroImage }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
+            className="absolute inset-0 flex items-center justify-center z-20 pointer-events-auto"
           >
-            <div className="w-[300px] h-[400px] md:w-[450px] md:h-[600px] mask-brush-stroke overflow-hidden glass-panel relative">
-              <img 
-                src={projectsData[0].image} 
-                alt="Featured Hero Graphic" 
-                className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-80 mix-blend-multiply" />
+            <div className="w-[300px] h-[400px] md:w-[450px] md:h-[600px] relative">
+              <Hero3DObject />
             </div>
           </motion.div>
 
