@@ -9,6 +9,7 @@ uniform vec2 uResolution;
 uniform vec2 uMouse;
 uniform vec3 uColor1;
 uniform vec3 uColor2;
+uniform vec3 uBgColor;
 varying vec2 vUv;
 
 // Noise functions
@@ -67,7 +68,7 @@ void main() {
   // Vignette
   float vignette = smoothstep(1.2, 0.2, length(st - vec2(0.5 * (uResolution.x/uResolution.y), 0.5)));
   
-  gl_FragColor = vec4(color * vignette, 1.0);
+  gl_FragColor = vec4(mix(uBgColor, color, vignette), 1.0);
 }
 `;
 
@@ -89,7 +90,8 @@ function ShaderPlane() {
     uResolution: { value: new Vector2(size.width, size.height) },
     uMouse: { value: new Vector2(0.5, 0.5) },
     uColor1: { value: new Color('#0a0a0a') },
-    uColor2: { value: new Color('#1a1a2e') }
+    uColor2: { value: new Color('#1a1a2e') },
+    uBgColor: { value: new Color('#000000') }
   }), [size]);
 
   useEffect(() => {
@@ -113,9 +115,11 @@ function ShaderPlane() {
       const isDark = document.documentElement.classList.contains('dark');
       const targetColor1 = isDark ? new Color('#050505') : new Color('#f0f0f0');
       const targetColor2 = isDark ? new Color('#111115') : new Color('#e0e5ff');
+      const targetBgColor = isDark ? new Color('#000000') : new Color('#ffffff');
       
       material.uniforms.uColor1.value.lerp(targetColor1, 0.05);
       material.uniforms.uColor2.value.lerp(targetColor2, 0.05);
+      material.uniforms.uBgColor.value.lerp(targetBgColor, 0.05);
     }
   });
 

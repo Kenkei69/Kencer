@@ -152,7 +152,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: i * 0.1, duration: 0.7 }}
-              className="w-full aspect-video rounded-[2rem] overflow-hidden glass-panel relative group"
+              className={`w-full ${video.isPortrait ? 'max-w-sm mx-auto aspect-[9/16]' : 'aspect-video'} rounded-[2rem] overflow-hidden glass-panel relative group`}
             >
               <video 
                 src={video.videoUrl} 
@@ -163,8 +163,8 @@ export default function Home() {
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent flex flex-col justify-end p-10 pointer-events-none">
-                <h3 className="font-display text-4xl text-foreground mb-2 uppercase">{video.title}</h3>
-                <p className="text-foreground opacity-90 uppercase tracking-widest font-bold text-sm">{video.category}</p>
+                <h3 className={`font-display text-4xl text-foreground mb-2 uppercase ${video.isPortrait ? 'text-center' : ''}`}>{video.title}</h3>
+                <p className={`text-foreground opacity-90 uppercase tracking-widest font-bold text-sm ${video.isPortrait ? 'text-center' : ''}`}>{video.category}</p>
               </div>
             </motion.div>
           ))}
