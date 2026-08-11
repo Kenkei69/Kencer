@@ -46,18 +46,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-10 px-4">
         
-        {/* Background Glowing Blobs */}
-        <motion.div 
-          animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blob-glow -translate-x-1/2 -translate-y-1/2 opacity-40 pointer-events-none" 
-        />
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], rotate: [0, -90, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blob-glow translate-x-1/2 translate-y-1/2 opacity-30 pointer-events-none" 
-        />
-
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center">
           
