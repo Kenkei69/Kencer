@@ -63,9 +63,7 @@ export default function Home() {
             style={{ y: yHeroImage }}
             className="absolute inset-0 flex items-center justify-center z-20 pointer-events-auto"
           >
-            <div className="w-[300px] h-[400px] md:w-[450px] md:h-[600px] relative">
-              <Hero3DObject />
-            </div>
+            <Hero3DObject />
           </motion.div>
 
           <motion.p 
