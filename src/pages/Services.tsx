@@ -1,5 +1,6 @@
 import { CheckCircle2, ArrowRight, Video, Code, PenTool, Share2, Hexagon } from 'lucide-react';
 import { Link } from 'react-router';
+import { motion } from 'framer-motion';
 
 export default function Services() {
   const services = [
@@ -73,18 +74,29 @@ export default function Services() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-20 min-h-[70vh]">
-      <div className="text-center mb-24">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-24"
+      >
         <h1 className="font-display text-7xl md:text-[120px] text-foreground leading-none mb-6 uppercase tracking-tighter mix-blend-overlay drop-shadow-sm">
           Our Services
         </h1>
         <p className="text-2xl text-foreground opacity-80 max-w-3xl mx-auto font-medium">
           Comprehensive digital solutions designed to elevate your brand and drive measurable results.
         </p>
-      </div>
+      </motion.div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {services.map((service, i) => (
-          <div key={i} className="glass-panel p-10 md:p-12 rounded-[2rem] flex flex-col relative group overflow-hidden hover:bg-[var(--glass-border)] transition-all duration-500 hover:-translate-y-2">
+          <motion.div 
+            key={i}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: i * 0.1 }}
+            className="glass-panel p-10 md:p-12 rounded-[2rem] flex flex-col relative group overflow-hidden hover:bg-[var(--glass-border)] transition-all duration-500 hover:-translate-y-2"
+          >
             {/* Subtle glow effect behind icon */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-500/20 transition-colors duration-500" />
             
@@ -117,12 +129,12 @@ export default function Services() {
                 </div>
               )}
               
-              <Link to="/contact" className="w-full py-5 bg-foreground text-background font-display text-xl tracking-widest uppercase rounded-2xl hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-all duration-300 flex items-center justify-center gap-3 group/btn hover:scale-[1.02]">
+              <Link to="/contact" className="w-full py-5 bg-foreground text-background font-display text-xl tracking-widest uppercase rounded-2xl hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-all duration-300 flex items-center justify-center gap-3 group/btn hover:scale-[1.02] magnetic-btn">
                 {service.cta}
                 <ArrowRight className="group-hover/btn:translate-x-2 transition-transform" />
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

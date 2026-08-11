@@ -62,6 +62,40 @@ body {
   font-family: var(--font-body);
   min-height: 100vh;
   transition: background 0.5s ease, color 0.5s ease;
+  /* Hide default cursor for custom cursor */
+  cursor: none; 
+}
+
+/* Ensure links and buttons also hide default cursor when hovering */
+a, button, input, textarea, select {
+  cursor: none !important; 
+}
+
+/* Custom Theme-Aware Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-muted);
+}
+
+/* Hide scrollbar completely if preferred */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {
