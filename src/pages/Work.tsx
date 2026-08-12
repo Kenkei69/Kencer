@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X, ZoomIn, PlayCircle, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
@@ -7,17 +7,7 @@ import { videosData, VideoProject } from '../data/videos';
 
 type CombinedProject = (Project | VideoProject) & { isVideo: boolean };
 
-// Parallax Project Card
 function ProjectCard({ project, onClick, index }: { project: CombinedProject, onClick: () => void, index: number }) {
-  const cardRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"]
-  });
-  
-  // Create a slight parallax effect for the image/video inside the card container
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -27,17 +17,16 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
-      className={`group cursor-pointer flex flex-col h-full w-full ${project.span || ''}`}
+      className="group cursor-pointer flex flex-col mb-12"
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div 
-        ref={cardRef}
-        className="w-full h-[500px] md:h-[600px] bg-[var(--glass-bg)] rounded-[2rem] overflow-hidden relative glass-panel mb-6"
-      >
+      {/* Dynamic Aspect Ratio Card */}
+      <div className="w-full bg-[var(--glass-bg)] rounded-[2rem] overflow-hidden relative glass-panel mb-6">
+        
         {/* Overlay on Hover */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
         
         {/* Center Icon */}
         <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100 pointer-events-none">
@@ -46,12 +35,12 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
           </div>
         </div>
         
-        {/* Media with Parallax */}
-        <motion.div style={{ y, height: "120%" }} className="absolute inset-0 -top-[10%] w-full">
+        {/* Media dynamically fitting */}
+        <div className="w-full relative overflow-hidden">
           {project.isVideo ? (
             <video 
               src={(project as VideoProject).videoUrl}
-              className={`w-full h-full object-cover transition-transform duration-[1.5s] ease-out ${isHovered ? 'scale-105' : 'scale-100'}`}
+              className={`w-full h-auto block transition-transform duration-[1.5s] ease-out ${isHovered ? 'scale-105' : 'scale-100'}`}
               autoPlay={isHovered}
               loop
               muted
@@ -61,11 +50,11 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
             <img 
               src={(project as Project).image} 
               alt={project.title}
-              className={`w-full h-full object-cover transition-transform duration-[1.5s] ease-out ${isHovered ? 'scale-105' : 'scale-100'}`}
+              className={`w-full h-auto block transition-transform duration-[1.5s] ease-out ${isHovered ? 'scale-105' : 'scale-100'}`}
               loading="lazy"
             />
           )}
-        </motion.div>
+        </div>
       </div>
       
       {/* Title Area */}
@@ -86,7 +75,7 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
 
 export default function Work() {
   const [selectedProject, setSelectedProject] = useState<CombinedProject | null>(null);
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('Graphics'); // Default to Graphics or Video
 
   const allProjects: CombinedProject[] = useMemo(() => {
     const graphics = projectsData.map(p => ({ ...p, isVideo: false }));
@@ -94,12 +83,12 @@ export default function Work() {
     return [...graphics, ...videos];
   }, []);
 
-  const categories = ['All', 'Graphic Design', 'Commercial', 'Event / Showcase', 'Documentary / Promo'];
+  const categories = ['Graphics', 'Video Projects'];
 
   const filteredProjects = useMemo(() => {
-    if (activeFilter === 'All') return allProjects;
-    if (activeFilter === 'Graphic Design') return allProjects.filter(p => !p.isVideo);
-    return allProjects.filter(p => p.category === activeFilter);
+    if (activeFilter === 'Graphics') return allProjects.filter(p => !p.isVideo);
+    if (activeFilter === 'Video Projects') return allProjects.filter(p => p.isVideo);
+    return allProjects;
   }, [allProjects, activeFilter]);
 
   return (
@@ -108,32 +97,33 @@ export default function Work() {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-24 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-8"
+          className="mb-24 text-center flex flex-col items-center justify-center gap-12"
         >
           <div>
-            <h1 className="font-display text-[clamp(4rem,10vw,140px)] text-foreground leading-[0.8] uppercase tracking-tighter mix-blend-overlay relative z-10 drop-shadow-sm mb-6">
+            {/* Removed mix-blend-overlay so it is fully visible in light/dark mode */}
+            <h1 className="font-display text-[clamp(4rem,10vw,140px)] text-foreground leading-[0.8] uppercase tracking-tighter relative z-10 drop-shadow-sm mb-6">
               Selected <br/> Work
             </h1>
-            <p className="text-2xl text-foreground opacity-70 max-w-xl font-medium leading-relaxed">
+            <p className="text-2xl text-foreground opacity-70 max-w-xl mx-auto font-medium leading-relaxed">
               A curated archive of our finest visual identities, campaigns, and immersive digital experiences.
             </p>
           </div>
           
-          {/* Filter Pills - Magnetic / Animated */}
-          <div className="flex flex-wrap gap-3 md:justify-end max-w-lg">
+          {/* Two Massive Buttons */}
+          <div className="flex gap-6 justify-center">
             {categories.map(category => (
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-5 py-2.5 rounded-full font-bold uppercase tracking-widest text-xs transition-all duration-300 relative ${
+                className={`px-8 py-5 rounded-full font-display text-2xl uppercase tracking-widest transition-all duration-300 relative overflow-hidden shadow-xl ${
                   activeFilter === category 
-                    ? 'text-background' 
-                    : 'text-foreground opacity-70 hover:opacity-100 hover:bg-foreground/5'
+                    ? 'text-background scale-105' 
+                    : 'text-foreground opacity-70 hover:opacity-100 hover:scale-105 glass-panel border border-[var(--glass-border)]'
                 }`}
               >
                 {activeFilter === category && (
                   <motion.div 
-                    layoutId="activeFilter" 
+                    layoutId="activeFilterBg" 
                     className="absolute inset-0 bg-foreground rounded-full -z-10"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
@@ -144,11 +134,11 @@ export default function Work() {
           </div>
         </motion.div>
 
-        {/* Dynamic Masonry-like Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-y-24 gap-x-12">
+        {/* CSS Columns Masonry Grid */}
+        <motion.div layout className="columns-1 md:columns-2 gap-12 space-y-12">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, i) => (
-              <div key={project.id} className={`${i % 2 !== 0 ? 'md:mt-32' : ''}`}>
+              <div key={project.id} className="break-inside-avoid">
                 <ProjectCard 
                   project={project} 
                   index={i} 
@@ -160,7 +150,7 @@ export default function Work() {
         </motion.div>
       </div>
 
-      {/* Fullscreen Lightbox / Modal (Rendered via Portal) */}
+      {/* Fullscreen Lightbox / Modal */}
       {typeof document !== 'undefined' && createPortal(
         <AnimatePresence>
           {selectedProject && (
@@ -190,19 +180,20 @@ export default function Work() {
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 className="relative z-[105] max-w-7xl w-full flex flex-col lg:flex-row gap-0 items-stretch bg-[var(--glass-bg)] rounded-[3rem] border border-[var(--glass-border)] glass-panel shadow-[0_0_100px_rgba(0,0,0,0.2)] max-h-[95vh] overflow-hidden"
               >
-                <div className="w-full lg:w-2/3 h-[40vh] lg:h-[85vh] relative bg-black shrink-0">
+                <div className="w-full lg:w-2/3 h-[40vh] lg:h-[85vh] relative bg-black shrink-0 flex items-center justify-center p-4">
+                  {/* Changed object-cover to object-contain so it's fully visible inside its custom frame */}
                   {selectedProject.isVideo ? (
                     <video 
                       src={(selectedProject as VideoProject).videoUrl}
                       controls
                       autoPlay
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   ) : (
                     <img 
                       src={(selectedProject as Project).image} 
                       alt={selectedProject.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   )}
                 </div>
