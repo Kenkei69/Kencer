@@ -53,7 +53,7 @@ export default function Home() {
           
           <motion.h1 
             style={{ y: yHeroText, opacity: opacityHero }}
-            className="font-display text-[clamp(4rem,22vw,360px)] leading-[0.8] text-white tracking-tighter mb-6 mix-blend-difference relative z-30 whitespace-nowrap"
+            className="font-display text-[clamp(4rem,22vw,360px)] leading-[0.8] text-white tracking-tighter mb-6 mix-blend-difference relative z-30 whitespace-nowrap pointer-events-none select-none"
           >
             <ScrambleText text="DIGITAL" />
             <br />
@@ -71,7 +71,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="mt-40 md:mt-24 text-xl md:text-2xl text-white mix-blend-difference font-medium z-30 opacity-100 max-w-3xl"
+            className="mt-40 md:mt-24 text-xl md:text-2xl text-white mix-blend-difference font-medium z-30 opacity-100 max-w-3xl pointer-events-none select-none"
           >
             Elevating brands through premium advertising, immersive digital experiences, and unapologetic creativity.
           </motion.p>
