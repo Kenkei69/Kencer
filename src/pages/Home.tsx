@@ -5,6 +5,7 @@ import Tilt from 'react-parallax-tilt';
 import { projectsData } from '../data/projects';
 import { videosData } from '../data/videos';
 import MagneticBtn from '../components/MagneticBtn';
+import Hero3DObject from '../components/Hero3DObject';
 import { useEffect, useState } from 'react';
 
 // Text Scramble Effect Component
@@ -52,14 +53,19 @@ export default function Home() {
           
           <motion.h1 
             style={{ y: yHeroText, opacity: opacityHero }}
-            className="font-display text-[var(--display-size)] leading-[0.85] text-foreground tracking-tighter mb-6 mix-blend-overlay relative z-30 drop-shadow-sm"
+            className="font-display text-[clamp(4rem,22vw,360px)] leading-[0.8] text-foreground tracking-tighter mb-6 mix-blend-overlay relative z-30 drop-shadow-sm whitespace-nowrap"
           >
             <ScrambleText text="DIGITAL" />
             <br />
             <ScrambleText text="EXCELLENCE" />
           </motion.h1>
 
-
+          <motion.div 
+            style={{ y: yHeroImage }}
+            className="absolute inset-0 flex items-center justify-center z-20 pointer-events-auto"
+          >
+            <Hero3DObject />
+          </motion.div>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
