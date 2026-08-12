@@ -40,7 +40,7 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
             <video 
               src={(project as VideoProject).videoUrl}
               className={`w-full h-auto block transition-transform duration-[1.5s] ease-out ${isHovered ? 'scale-105' : 'scale-100'}`}
-              autoPlay={isHovered}
+              autoPlay
               loop
               muted
               playsInline
