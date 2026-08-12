@@ -12,7 +12,6 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
 
   return (
     <motion.div 
-      layout
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9 }}
@@ -135,7 +134,7 @@ export default function Work() {
         </motion.div>
 
         {/* CSS Columns Masonry Grid */}
-        <motion.div layout className="columns-1 md:columns-2 gap-12 space-y-12">
+        <motion.div className="columns-1 md:columns-2 gap-12 space-y-12">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, i) => (
               <div key={project.id} className="break-inside-avoid">

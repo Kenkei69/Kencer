@@ -11,21 +11,24 @@ function Droplet({ position, onRemove }: { position: THREE.Vector3, onRemove: ()
     (Math.random() - 0.5) * 0.2, 
     Math.random() * 0.2 + 0.1
   ), []);
-  const [scale, setScale] = useState(Math.random() * 0.2 + 0.1);
 
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.position.add(velocity);
       velocity.y -= 0.008; // gravity
-      setScale(s => Math.max(0, s - 0.003)); // shrink rapidly
-      if (scale <= 0) {
+      
+      const currentScale = meshRef.current.scale.x;
+      const newScale = Math.max(0, currentScale - 0.003);
+      meshRef.current.scale.setScalar(newScale);
+      
+      if (newScale <= 0) {
         onRemove();
       }
     }
   });
 
   return (
-    <Sphere ref={meshRef} args={[scale, 32, 32]} position={position}>
+    <Sphere ref={meshRef} args={[0.3, 16, 16]} position={position}>
       <MeshDistortMaterial 
         color="#1a1a2e"
         envMapIntensity={2}
