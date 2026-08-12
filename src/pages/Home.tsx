@@ -53,7 +53,7 @@ export default function Home() {
           
           <motion.h1 
             style={{ y: yHeroText, opacity: opacityHero }}
-            className="font-display text-[clamp(4rem,22vw,360px)] leading-[0.8] text-foreground tracking-tighter mb-6 mix-blend-overlay relative z-30 drop-shadow-sm whitespace-nowrap"
+            className="font-display text-[clamp(4rem,22vw,360px)] leading-[0.8] text-white tracking-tighter mb-6 mix-blend-difference relative z-30 whitespace-nowrap"
           >
             <ScrambleText text="DIGITAL" />
             <br />
@@ -62,7 +62,7 @@ export default function Home() {
 
           <motion.div 
             style={{ y: yHeroImage }}
-            className="absolute inset-0 flex items-center justify-center z-20 pointer-events-auto"
+            className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
           >
             <Hero3DObject />
           </motion.div>
@@ -71,7 +71,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="mt-40 md:mt-24 text-xl md:text-2xl text-foreground font-medium z-30 opacity-90 max-w-3xl"
+            className="mt-40 md:mt-24 text-xl md:text-2xl text-white mix-blend-difference font-medium z-30 opacity-100 max-w-3xl"
           >
             Elevating brands through premium advertising, immersive digital experiences, and unapologetic creativity.
           </motion.p>
@@ -88,7 +88,7 @@ export default function Home() {
               </Link>
             </MagneticBtn>
             <MagneticBtn intensity={0.2}>
-              <Link to="/work" className="px-8 py-5 border border-[var(--glass-border)] text-foreground font-display text-2xl tracking-widest uppercase rounded-full hover:bg-[var(--glass-border)] transition-all duration-300 glass-panel hover:scale-105">
+              <Link to="/work" className="px-8 py-5 border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md text-foreground font-display text-2xl tracking-widest uppercase rounded-full hover:bg-foreground hover:text-background transition-all duration-300 shadow-xl hover:scale-105">
                 View Work
               </Link>
             </MagneticBtn>
