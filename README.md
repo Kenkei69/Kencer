@@ -1,4 +1,4 @@
-# SUMNAY MEDIA Portfolio
+# KENCER MEDIA Portfolio
 
 A premium, high-converting portfolio designed for a bold digital agency. Features a custom liquid-glass and claymorphism design system, seamless light/dark mode toggling, and interactive project showcases.
 
