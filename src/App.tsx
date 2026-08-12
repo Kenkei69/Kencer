@@ -94,7 +94,7 @@ function Layout() {
 
         <header className="fixed w-full top-0 z-50 glass-panel border-b-0 px-6 py-4 transition-all duration-300">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <Link to="/" className="font-display text-2xl tracking-wider text-foreground hover:scale-105 transition-transform origin-left">
+            <Link to="/" className="font-display text-4xl md:text-5xl tracking-wider text-foreground hover:scale-105 transition-transform origin-left">
               KENCER<span className="opacity-50">.</span>
             </Link>
 
@@ -200,7 +200,7 @@ function Layout() {
           <footer className="fixed bottom-0 w-full z-0 glass-panel border-t border-[var(--glass-border)] pt-20 pb-10 px-6 h-[400px]">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
               <div className="col-span-1 md:col-span-2">
-                <Link to="/" className="font-display text-4xl tracking-wider text-foreground mb-6 block">
+                <Link to="/" className="font-display text-5xl md:text-6xl tracking-wider text-foreground mb-6 block">
                   KENCER<span className="opacity-50">.</span>
                 </Link>
                 <p className="text-foreground-muted max-w-sm mb-8 text-lg font-medium">
