@@ -16,7 +16,6 @@ import ReadingProgress from './components/ReadingProgress';
 import FloatingActionPill from './components/FloatingActionPill';
 import SmoothScroll from './components/SmoothScroll';
 import Preloader from './components/Preloader';
-import FluidBackground from './components/FluidBackground';
 
 // Page Transition Wrapper
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
@@ -79,7 +78,6 @@ function Layout() {
       <div className="min-h-screen flex flex-col font-body selection:bg-primary selection:text-white relative overflow-hidden transition-colors duration-500">
         
         {/* Global Components */}
-        <FluidBackground />
         <ScrollToTop />
         <ReadingProgress />
         <FloatingActionPill />
