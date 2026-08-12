@@ -62,7 +62,7 @@ export default function Home() {
 
           <motion.div 
             style={{ y: yHeroImage }}
-            className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+            className="absolute inset-0 flex items-center justify-center z-20"
           >
             <Hero3DObject />
           </motion.div>
@@ -82,15 +82,11 @@ export default function Home() {
             transition={{ delay: 1.2 }}
             className="mt-12 flex flex-col sm:flex-row gap-6 items-center z-30"
           >
-            <MagneticBtn intensity={0.3}>
-              <Link to="/contact" className="px-8 py-5 bg-foreground text-background font-display text-2xl tracking-widest uppercase rounded-full transition-all duration-300 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:scale-105">
-                Get Your Own Ad <ArrowRight size={24} />
-              </Link>
+            <MagneticBtn as={Link} to="/contact" intensity={0.3} className="px-8 py-5 bg-foreground text-background font-display text-2xl tracking-widest uppercase rounded-full transition-all duration-300 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:scale-105">
+              Get Your Own Ad <ArrowRight size={24} />
             </MagneticBtn>
-            <MagneticBtn intensity={0.2}>
-              <Link to="/work" className="px-8 py-5 border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md text-foreground font-display text-2xl tracking-widest uppercase rounded-full hover:bg-foreground hover:text-background transition-all duration-300 shadow-xl hover:scale-105">
-                View Work
-              </Link>
+            <MagneticBtn as={Link} to="/work" intensity={0.2} className="px-8 py-5 border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md text-foreground font-display text-2xl tracking-widest uppercase rounded-full hover:bg-foreground hover:text-background transition-all duration-300 shadow-xl hover:scale-105">
+              View Work
             </MagneticBtn>
           </motion.div>
 
