@@ -57,18 +57,11 @@
 
 body {
   background: var(--gradient-bg);
-  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-body);
+  background-attachment: fixed;
   min-height: 100vh;
-  transition: background 0.5s ease, color 0.5s ease;
-  /* Hide default cursor for custom cursor */
-  cursor: none; 
-}
-
-/* Ensure links and buttons also hide default cursor when hovering */
-a, button, input, textarea, select {
-  cursor: none !important; 
+  transition: background 0.5s, color 0.5s;
 }
 
 /* Custom Theme-Aware Scrollbar */
