@@ -1,6 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MapPin, Phone, ArrowRight, CheckCircle2 } from 'lucide-react';
+
+const WhatsappIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
 import toast from 'react-hot-toast';
 
 export default function Contact() {
@@ -14,7 +28,7 @@ export default function Contact() {
     return () => clearInterval(timer);
   }, []);
 
-  const timeString = time.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: true });
+  const timeString = time.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,7 +116,7 @@ export default function Contact() {
 
         <div className="relative z-10 mt-20 flex flex-col sm:flex-row gap-12">
           <div>
-            <h4 className="font-display text-xl uppercase tracking-widest mb-4 opacity-50">Local Time (NYC)</h4>
+            <h4 className="font-display text-xl uppercase tracking-widest mb-4 opacity-50">Local Time (IST)</h4>
             <div className="font-mono text-3xl font-bold">{timeString}</div>
           </div>
           <div>
@@ -183,11 +197,33 @@ export default function Contact() {
               </div>
               <span className="font-medium text-lg">hello@kencer.com</span>
             </a>
-            <div className="flex items-center gap-4 text-foreground opacity-70">
+            
+            <a href="tel:+919520544305" className="flex items-center gap-4 text-foreground opacity-70 hover:opacity-100 hover:text-primary transition-colors group">
+              <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center group-hover:bg-primary/10">
+                <Phone size={20} />
+              </div>
+              <span className="font-medium text-lg">+91 95205 44305</span>
+            </a>
+
+            <a href="https://wa.me/919520544305" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-foreground opacity-70 hover:opacity-100 hover:text-green-500 transition-colors group">
+              <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center group-hover:bg-green-500/10">
+                <WhatsappIcon />
+              </div>
+              <span className="font-medium text-lg">WhatsApp Us</span>
+            </a>
+
+            <a href="https://www.instagram.com/_kencer_" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-foreground opacity-70 hover:opacity-100 hover:text-pink-500 transition-colors group">
+              <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center group-hover:bg-pink-500/10">
+                <InstagramIcon />
+              </div>
+              <span className="font-medium text-lg">@_kencer_</span>
+            </a>
+
+            <div className="flex items-center gap-4 text-foreground opacity-70 sm:col-span-2 mt-4">
               <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center">
                 <MapPin size={20} />
               </div>
-              <span className="font-medium text-lg">New York, NY</span>
+              <span className="font-medium text-lg">India</span>
             </div>
           </div>
         </div>
