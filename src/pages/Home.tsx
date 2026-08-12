@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { projectsData } from '../data/projects';
 import { videosData } from '../data/videos';
-import Hero3DObject from '../components/Hero3DObject';
+import MagneticBtn from '../components/MagneticBtn';
 import { useEffect, useState } from 'react';
 
 // Text Scramble Effect Component
@@ -59,12 +59,7 @@ export default function Home() {
             <ScrambleText text="EXCELLENCE" />
           </motion.h1>
 
-          <motion.div 
-            style={{ y: yHeroImage }}
-            className="absolute inset-0 flex items-center justify-center z-20 pointer-events-auto"
-          >
-            <Hero3DObject />
-          </motion.div>
+
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -81,12 +76,16 @@ export default function Home() {
             transition={{ delay: 1.2 }}
             className="mt-12 flex flex-col sm:flex-row gap-6 items-center z-30"
           >
-            <Link to="/contact" className="px-8 py-5 bg-foreground text-background font-display text-2xl tracking-widest uppercase rounded-full transition-all duration-300 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:scale-105 magnetic-btn">
-              Get Your Own Ad <ArrowRight size={24} />
-            </Link>
-            <Link to="/work" className="px-8 py-5 border border-[var(--glass-border)] text-foreground font-display text-2xl tracking-widest uppercase rounded-full hover:bg-[var(--glass-border)] transition-all duration-300 glass-panel hover:scale-105 magnetic-btn">
-              View Work
-            </Link>
+            <MagneticBtn intensity={0.3}>
+              <Link to="/contact" className="px-8 py-5 bg-foreground text-background font-display text-2xl tracking-widest uppercase rounded-full transition-all duration-300 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:scale-105">
+                Get Your Own Ad <ArrowRight size={24} />
+              </Link>
+            </MagneticBtn>
+            <MagneticBtn intensity={0.2}>
+              <Link to="/work" className="px-8 py-5 border border-[var(--glass-border)] text-foreground font-display text-2xl tracking-widest uppercase rounded-full hover:bg-[var(--glass-border)] transition-all duration-300 glass-panel hover:scale-105">
+                View Work
+              </Link>
+            </MagneticBtn>
           </motion.div>
 
           <motion.div 

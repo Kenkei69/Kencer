@@ -11,7 +11,7 @@ import Services from './pages/Services';
 import Work from './pages/Work';
 import Contact from './pages/Contact';
 
-import CustomCursor from './components/CustomCursor';
+import ScrollToTop from './components/ScrollToTop';
 import ReadingProgress from './components/ReadingProgress';
 import FloatingActionPill from './components/FloatingActionPill';
 import SmoothScroll from './components/SmoothScroll';
@@ -80,7 +80,7 @@ function Layout() {
         
         {/* Global Components */}
         <FluidBackground />
-        <CustomCursor />
+        <ScrollToTop />
         <ReadingProgress />
         <FloatingActionPill />
         <Toaster 

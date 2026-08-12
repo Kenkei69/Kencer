@@ -30,12 +30,12 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
         transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         className="fixed inset-0 z-[99999] bg-background flex flex-col items-center justify-center text-foreground"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl px-6 flex justify-between items-end">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 flex flex-col items-center justify-center gap-4">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="font-display text-4xl md:text-8xl tracking-widest"
+            className="font-display text-5xl md:text-8xl tracking-widest"
           >
             KENCER<span className="opacity-50">.</span>
           </motion.div>
@@ -43,7 +43,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="font-display text-6xl md:text-9xl font-bold"
+            className="font-display text-4xl md:text-6xl font-bold opacity-80"
           >
             {progress}%
           </motion.div>
