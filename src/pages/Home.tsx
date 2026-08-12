@@ -49,7 +49,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-10 px-4 bg-background">
         
         {/* Hero Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center pb-32">
+        <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center text-center pb-32">
           
           <motion.h1 
             style={{ y: yHeroText, opacity: opacityHero }}
