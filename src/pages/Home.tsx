@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-32 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-10 px-4">
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-10 px-4 bg-background">
         
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center">
