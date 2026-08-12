@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, ZoomIn, PlayCircle, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
@@ -9,6 +9,15 @@ type CombinedProject = (Project | VideoProject) & { isVideo: boolean };
 
 function ProjectCard({ project, onClick, index }: { project: CombinedProject, onClick: () => void, index: number }) {
   const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (project.isVideo && videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay was blocked by browser
+      });
+    }
+  }, [project.isVideo]);
 
   return (
     <motion.div 
@@ -38,6 +47,7 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
         <div className="w-full relative overflow-hidden">
           {project.isVideo ? (
             <video 
+              ref={videoRef}
               src={(project as VideoProject).videoUrl}
               className={`w-full h-auto block transition-transform duration-[1.5s] ease-out ${isHovered ? 'scale-105' : 'scale-100'}`}
               autoPlay
