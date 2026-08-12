@@ -263,9 +263,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { name: "Sarah Jenkins", role: "CMO, TechNova", text: "The redesign completely transformed our brand perception. We look like a billion-dollar company now." },
-              { name: "Marcus Reed", role: "Founder, Studio X", text: "Bold, uncompromised, and technically flawless. They delivered exactly what we needed to stand out." },
-              { name: "Elena Rostova", role: "Director, ArtBasel", text: "A rare mix of true artistic vision and digital execution. The final product exceeded all expectations." }
+              { name: "NYU INDIA", role: "Social Media Client", text: "Working with Kencer for my page, NYU INDIA, has been game-changing. We opted for their social media package, and their Instagram post generation gave us incredible engagement. Thanks to their strategies, our account reach shot up from 100K to 4 Million!\n\nWhat makes Kencer stand out is their ability to deliver top-tier, high-performing services within a very budget-friendly package. Their team is dedicated, creative, and focused on real growth.\n\nFrom now on, I will exclusively partner with Kencer for all our social media needs. If you are a business owner looking to scale your brand's digital presence and maximize ROI without overspending, I highly recommend Kencer." },
+              { name: "The Angar Batch", role: "Digital Growth Client", text: "Working with Kencer for the past 3 months has been an absolute game-changer for The Angar Batch. They have been managing our entire social media presence, handling everything from high-converting social media posts to top-notch video editing and full account management.\n\nThanks to their strategic content and consistent effort, our follower base grew from 11K to over 30K in just 3 months! Their team is extremely professional, creative, and budget-friendly.\n\nKencer is now our permanent partner for all digital growth. If any business owner wants real, fast, and organic social media growth, I highly recommend Kencer!" },
+              { name: "Terphern AI", role: "Tech Brand", text: "We recently partnered with Kencer for Terphern AI, and even though we’ve just started working together, their work quality has already blown us away.\n\nTheir video editing skills are absolutely outstanding—bringing a sharp, high-end feel to our content that perfectly matches our tech brand. What sets their social media management apart is their operational discipline; they provide detailed, time-to-time performance reports, keeping us completely updated on our growth metrics without any follow-ups needed.\n\nIf you are a founder or business owner who values speed, precision, and complete transparency in social media execution, Kencer is hands-down the right agency to scale your brand." }
             ].map((testimonial, i) => (
               <motion.div 
                 key={i}
@@ -278,7 +278,7 @@ export default function Home() {
                 <div className="flex text-foreground mb-6">
                   {[...Array(5)].map((_, j) => <Star key={j} size={20} fill="currentColor" className="opacity-80 text-blue-500" />)}
                 </div>
-                <p className="text-xl text-foreground opacity-90 mb-8 italic font-medium">"{testimonial.text}"</p>
+                <p className="text-base text-foreground opacity-90 mb-8 italic font-medium whitespace-pre-line">"{testimonial.text}"</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-[var(--glass-border)]" />
                   <div>
