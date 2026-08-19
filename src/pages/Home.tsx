@@ -46,10 +46,18 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-32 overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-10 px-4 bg-background">
+      <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-10 px-4 bg-background overflow-hidden">
         
+        {/* Full-width 3D Background */}
+        <motion.div 
+          style={{ y: yHeroImage }}
+          className="absolute inset-0 w-full h-full z-20 flex items-center justify-center"
+        >
+          <Hero3DObject />
+        </motion.div>
+
         {/* Hero Content */}
-        <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center text-center pb-32">
+        <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center text-center pb-32 pointer-events-none">
           
           <motion.h1 
             style={{ y: yHeroText, opacity: opacityHero }}
@@ -59,13 +67,6 @@ export default function Home() {
             <br />
             <ScrambleText text="EXCELLENCE" />
           </motion.h1>
-
-          <motion.div 
-            style={{ y: yHeroImage }}
-            className="absolute inset-0 flex items-center justify-center z-20"
-          >
-            <Hero3DObject />
-          </motion.div>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -80,7 +81,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="mt-12 flex flex-col sm:flex-row gap-6 items-center z-30"
+            className="mt-12 flex flex-col sm:flex-row gap-6 items-center z-30 pointer-events-auto"
           >
             <MagneticBtn as={Link} to="/contact" intensity={0.3} className="px-8 py-5 bg-foreground text-background font-display text-2xl tracking-widest uppercase rounded-full transition-all duration-300 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:scale-105">
               Get Your Own Ad <ArrowRight size={24} />

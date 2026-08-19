@@ -191,11 +191,11 @@ export default function Contact() {
 
           {/* Quick Contact Info */}
           <div className="mt-20 pt-10 border-t border-[var(--glass-border)] grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <a href="mailto:hello@kencer.com" className="flex items-center gap-4 text-foreground opacity-70 hover:opacity-100 hover:text-primary transition-colors group">
+            <a href="mailto:ms6959826@gmail.com" className="flex items-center gap-4 text-foreground opacity-70 hover:opacity-100 hover:text-primary transition-colors group">
               <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center group-hover:bg-primary/10">
                 <Mail size={20} />
               </div>
-              <span className="font-medium text-lg">hello@kencer.com</span>
+              <span className="font-medium text-lg">ms6959826@gmail.com</span>
             </a>
             
             <a href="tel:+919520544305" className="flex items-center gap-4 text-foreground opacity-70 hover:opacity-100 hover:text-primary transition-colors group">
