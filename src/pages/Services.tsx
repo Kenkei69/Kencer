@@ -19,7 +19,8 @@ const services = [
       "Audio enhancement & spatial sound design"
     ],
     cta: "Request Video Editing Quote",
-    bonus: "FREE Domain & Hosting Included"
+    bonus: "FREE Domain & Hosting Included",
+    price: "Starting at ₹4,999"
   },
   {
     id: 'web',
@@ -35,7 +36,8 @@ const services = [
       "Full-stack e-commerce architecture"
     ],
     cta: "Request Web Development Quote",
-    bonus: "Free 2-time edits / revisions included"
+    bonus: "Free 2-time edits / revisions included",
+    price: "Starting at ₹9,999"
   },
   {
     id: 'graphic',
@@ -51,7 +53,8 @@ const services = [
       "High-CTR YouTube thumbnails"
     ],
     cta: "Request Graphic Design Quote",
-    bonus: "Free weekly 2 high-grade posts & 1 viral reel included"
+    bonus: "Free weekly 2 high-grade posts & 1 viral reel included",
+    price: "Starting at ₹2,999"
   },
   {
     id: 'social',
@@ -66,7 +69,9 @@ const services = [
       "Scheduled automated publishing",
       "In-depth monthly performance reports"
     ],
-    cta: "Request Social Media Handling Quote"
+    cta: "Request Social Media Handling Quote",
+    price: "Starting at ₹7,999/mo",
+    popular: true
   },
   {
     id: 'logo',
@@ -82,7 +87,8 @@ const services = [
       "Multiple format exports (SVG, PNG, EPS)"
     ],
     cta: "Request Logo Design Quote",
-    bonus: "Full commercial rights & source files included"
+    bonus: "Full commercial rights & source files included",
+    price: "Starting at ₹1,999"
   }
 ];
 
@@ -138,6 +144,11 @@ export default function Services() {
                 </span>
                 <span className="font-display text-2xl uppercase tracking-wider">{service.title}</span>
               </div>
+              {'popular' in service && service.popular && (
+                <span className={`text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full whitespace-nowrap transition-colors duration-300 ${activeService.id === service.id ? 'bg-background text-foreground' : 'bg-foreground text-background'}`}>
+                  Most Popular
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -161,9 +172,14 @@ export default function Services() {
                 >
                   {activeService.icon}
                 </div>
-                <h2 className="font-display text-5xl md:text-6xl text-foreground uppercase tracking-tighter leading-none">
-                  {activeService.title}
-                </h2>
+                <div>
+                  <h2 className="font-display text-5xl md:text-6xl text-foreground uppercase tracking-tighter leading-none">
+                    {activeService.title}
+                  </h2>
+                  <p className="text-3xl font-bold mt-4" style={{ color: activeService.color }}>
+                    {activeService.price}
+                  </p>
+                </div>
               </div>
 
               <p className="text-2xl text-foreground opacity-80 leading-relaxed font-medium mb-12">

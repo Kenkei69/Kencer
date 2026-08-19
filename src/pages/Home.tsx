@@ -1,12 +1,36 @@
 import { ArrowRight, CheckCircle2, Star, Zap, MonitorSmartphone, PenTool, PlayCircle } from 'lucide-react';
 import { Link } from 'react-router';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, useMotionValue, animate } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { projectsData } from '../data/projects';
 import { videosData } from '../data/videos';
 import MagneticBtn from '../components/MagneticBtn';
 import Hero3DObject from '../components/Hero3DObject';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+
+// Stat Counter Component
+const StatCounter = ({ value, suffix, label }: { value: number, suffix: string, label: string }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  
+  useEffect(() => {
+    if (inView) {
+      animate(count, value, { duration: 2, ease: "easeOut" });
+    }
+  }, [inView, value, count]);
+
+  return (
+    <div ref={ref} className="flex flex-col items-center flex-1">
+      <div className="font-display text-5xl md:text-7xl text-foreground flex">
+        <motion.span>{rounded}</motion.span>
+        <span>{suffix}</span>
+      </div>
+      <span className="text-foreground opacity-60 text-sm uppercase tracking-widest font-bold mt-2 text-center">{label}</span>
+    </div>
+  );
+};
 
 // Text Scramble Effect Component
 const ScrambleText = ({ text }: { text: string }) => {
@@ -119,6 +143,19 @@ export default function Home() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Impact Stats */}
+      <section className="max-w-7xl mx-auto w-full px-6 relative z-10">
+        <div className="glass-panel p-10 md:p-16 rounded-[3rem] flex flex-col md:flex-row gap-10 md:gap-4 justify-between items-center relative overflow-hidden">
+          <StatCounter value={50} suffix="M+" label="Views Generated" />
+          <div className="hidden md:block w-px h-16 bg-[var(--glass-border)]"></div>
+          <StatCounter value={300} suffix="%" label="Average ROI" />
+          <div className="hidden md:block w-px h-16 bg-[var(--glass-border)]"></div>
+          <StatCounter value={200} suffix="+" label="Campaigns Launched" />
+          <div className="hidden md:block w-px h-16 bg-[var(--glass-border)]"></div>
+          <StatCounter value={4} suffix="M+" label="Reach Delivered" />
         </div>
       </section>
 

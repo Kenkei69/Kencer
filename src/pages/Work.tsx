@@ -221,6 +221,34 @@ export default function Work() {
                     {selectedProject.description}
                   </p>
                   
+                  {/* Case Study Details */}
+                  {(selectedProject as any).tools && (
+                    <div className="mb-8">
+                      <h4 className="font-display text-sm uppercase tracking-widest text-foreground opacity-50 mb-4">Tools Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {((selectedProject as any).tools as string[]).map((tool: string, i: number) => (
+                          <span key={i} className="px-4 py-2 rounded-full bg-foreground/10 text-foreground text-sm font-medium">{tool}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {(selectedProject as any).metrics && (
+                    <div className="mb-8">
+                      <h4 className="font-display text-sm uppercase tracking-widest text-foreground opacity-50 mb-4">Results</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {((selectedProject as any).metrics as string[]).map((metric: string, i: number) => (
+                          <span key={i} className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold">{metric}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {(selectedProject as any).timeline && (
+                    <div className="mb-8">
+                      <h4 className="font-display text-sm uppercase tracking-widest text-foreground opacity-50 mb-4">Timeline</h4>
+                      <p className="text-foreground font-medium">{(selectedProject as any).timeline}</p>
+                    </div>
+                  )}
+                  
                   <div className="mt-auto">
                     <button 
                       className="w-full py-5 bg-foreground text-background rounded-2xl font-display uppercase tracking-widest text-xl hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:-translate-y-1 transition-all duration-300"
