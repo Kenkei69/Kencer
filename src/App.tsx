@@ -34,34 +34,19 @@ const WhatsappIcon = () => (
   </svg>
 );
 
-// Page Transition Wrapper with Curtain Effect
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
+        initial={{ opacity: 0, scale: 0.98, filter: 'blur(10px)' }}
+        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, scale: 1.02, filter: 'blur(10px)' }}
+        transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
         className="w-full"
       >
-        {/* Curtain overlay */}
-        <motion.div
-          initial={{ scaleY: 1 }}
-          animate={{ scaleY: 0 }}
-          exit={{ scaleY: 1 }}
-          transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-          style={{ originY: 0 }}
-          className="fixed inset-0 z-[9998] bg-foreground pointer-events-none"
-        />
-        
-        {/* Page content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-        >
-          {children}
-        </motion.div>
+        {children}
       </motion.div>
     </AnimatePresence>
   );
@@ -142,25 +127,6 @@ function Layout() {
                   >
                     {link.name}
                   </Link>
-                  {/* Mega Menu Dropdown for Work */}
-                  {link.name === 'Work' && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-96 p-4 glass-panel rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 shadow-2xl">
-                      <div className="grid grid-cols-2 gap-4">
-                        <Link to="/work" className="group/item flex flex-col gap-2">
-                          <div className="w-full aspect-video rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center overflow-hidden relative">
-                            <PlayCircle className="text-foreground opacity-50 group-hover/item:scale-110 group-hover/item:text-primary transition-all relative z-10" size={32} />
-                          </div>
-                          <span className="text-xs font-bold uppercase tracking-widest text-foreground text-center mt-2">Video Reel</span>
-                        </Link>
-                        <Link to="/work" className="group/item flex flex-col gap-2">
-                          <div className="w-full aspect-video rounded-lg bg-foreground/10 border border-[var(--glass-border)] flex items-center justify-center overflow-hidden">
-                            <span className="font-display text-2xl text-foreground opacity-50 group-hover/item:scale-110 group-hover/item:text-primary transition-all">G</span>
-                          </div>
-                          <span className="text-xs font-bold uppercase tracking-widest text-foreground text-center mt-2">Graphics</span>
-                        </Link>
-                      </div>
-                    </div>
-                  )}
                 </div>
               ))}
             </nav>
