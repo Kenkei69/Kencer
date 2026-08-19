@@ -23,7 +23,6 @@ function ProjectCard({ project, onClick, index }: { project: CombinedProject, on
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
       className="group cursor-pointer flex flex-col mb-12"
       onClick={onClick}
@@ -143,20 +142,18 @@ export default function Work() {
           </div>
         </motion.div>
 
-        {/* CSS Columns Masonry Grid */}
-        <motion.div className="columns-1 md:columns-2 gap-12 space-y-12">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, i) => (
-              <div key={project.id} className="break-inside-avoid">
-                <ProjectCard 
-                  project={project} 
-                  index={i} 
-                  onClick={() => setSelectedProject(project)} 
-                />
-              </div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {filteredProjects.map((project, i) => (
+            <div key={project.id}>
+              <ProjectCard 
+                project={project} 
+                index={i} 
+                onClick={() => setSelectedProject(project)} 
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Fullscreen Lightbox / Modal */}
